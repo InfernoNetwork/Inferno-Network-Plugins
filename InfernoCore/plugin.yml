@@ -1,0 +1,6 @@
+name: InfernoCore
+main: inferno.network.Main
+version: 1.0
+commands:
+    kick:
+    warn:
