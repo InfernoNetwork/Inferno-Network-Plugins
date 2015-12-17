@@ -9,5 +9,9 @@ public class ChatUtils {
 	public static String permissions(){
 		return "§7Permissions §c> §e";
 	}
+	
+	public static String utils(){
+		return "§7Utilities §c> §e";
+	}
 
 }

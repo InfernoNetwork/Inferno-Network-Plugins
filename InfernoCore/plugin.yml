@@ -4,3 +4,7 @@ version: 1.0
 commands:
     kick:
     warn:
+    ban:
+    fly:
+    gamemode:
+    tp:
