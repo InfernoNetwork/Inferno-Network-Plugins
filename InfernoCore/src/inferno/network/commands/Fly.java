@@ -17,7 +17,7 @@ public class Fly implements CommandExecutor{
 			
 			if(!(p.hasPermission("inferno.kick"))){
 				
-				p.sendMessage(ChatUtils.permissions() + "You do not have the permission to execute this command.");
+				p.sendMessage(ChatUtils.prefix() + "§4You do not have the permission to execute this command.");
 				
 				return true;
 				
@@ -26,12 +26,12 @@ public class Fly implements CommandExecutor{
 				if(p.getAllowFlight()){
 					
 					p.setAllowFlight(false);
-					p.sendMessage(ChatUtils.utils() + "You have disabled §cFly§e.");
+					p.sendMessage(ChatUtils.prefix() + "You have disabled Fly.");
 					
 				}else{
 				
 					p.setAllowFlight(true);
-					p.sendMessage(ChatUtils.utils() + "You have enabled §cFly§e.");
+					p.sendMessage(ChatUtils.prefix() + "You have enabled Fly.");
 					
 				}
 			}

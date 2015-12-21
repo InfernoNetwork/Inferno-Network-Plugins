@@ -18,14 +18,14 @@ public class Gamemode implements CommandExecutor{
 			
 			if(!(p.hasPermission("inferno.gamemode"))){
 				
-				p.sendMessage(ChatUtils.permissions() + "You do not have the permission to execute this command.");
+				p.sendMessage(ChatUtils.prefix() + "§4You do not have the permission to execute this command.");
 				
 				return true;
 				
 			}
 			
 			if(args.length == 0){
-				p.sendMessage(ChatUtils.utils() + "Invalid args. Usage : §c/gamemode <0/1/2>");
+				p.sendMessage(ChatUtils.prefix() + "Invalid args. Usage : /gamemode <0/1/2>");
 				
 				return true;
 				
@@ -33,21 +33,21 @@ public class Gamemode implements CommandExecutor{
 			
 			if(args[0].equalsIgnoreCase("0")){
 				
-				p.sendMessage(ChatUtils.utils() + "You have set your gamemode to §cSurvival");
+				p.sendMessage(ChatUtils.prefix() + "You have set your gamemode to Survival");
 				p.setGameMode(GameMode.SURVIVAL);
 				
 			}else{
 			
 			if(args[0].equalsIgnoreCase("1")){
 				
-				p.sendMessage(ChatUtils.utils() + "You have set your gamemode to §cCreative");
+				p.sendMessage(ChatUtils.prefix() + "You have set your gamemode to Creative");
 				p.setGameMode(GameMode.CREATIVE);
 				
 			}else{
 			
 			if(args[0].equalsIgnoreCase("2")){
 				
-				p.sendMessage(ChatUtils.utils() + "You have set your gamemode to §cAdventure");
+				p.sendMessage(ChatUtils.prefix() + "You have set your gamemode to Adventure");
 				p.setGameMode(GameMode.ADVENTURE);
 				
 			}

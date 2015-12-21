@@ -18,7 +18,7 @@ public class TP implements CommandExecutor{
 			
 			if(!(p.hasPermission("inferno.tp"))){
 				
-				p.sendMessage(ChatUtils.permissions() + "You do not have the permission to execute this command.");
+				p.sendMessage(ChatUtils.prefix() + "§4You do not have the permission to execute this command.");
 				
 				return true;
 				
@@ -26,7 +26,7 @@ public class TP implements CommandExecutor{
 			
 			if(args.length == 0){
 
-				p.sendMessage(ChatUtils.punishments() + "Invalid args. Usage : §c/tp <Player>");
+				p.sendMessage(ChatUtils.prefix() + "Invalid args. Usage : /tp <Player>");
 				
 				return true;
 				
@@ -36,24 +36,19 @@ public class TP implements CommandExecutor{
 					
 					Player target = Bukkit.getServer().getPlayer(args[0]);
 					
+	                if (target == null) {
+	                    sender.sendMessage(ChatUtils.prefix() + "Could not find player " + args[0]);
+	                    return true;
+	                    
+	                }
+					
 					target.teleport(p);
 					
-					p.sendMessage(ChatUtils.utils() + "You have teleported to player §c" + target.getName() + "§e.");
-					target.sendMessage(ChatUtils.utils() + "Player §c" + p.getName() + " §ehas teleported to you.");
+					p.sendMessage(ChatUtils.prefix() + "You have teleported to player " + target.getName() + ".");
+					target.sendMessage(ChatUtils.prefix() + "Player " + p.getName() + " has teleported to you.");
+					
 				}
-				
-				if(args.length == 1){
-					
-					Player target = Bukkit.getServer().getPlayer(args[0]);
-					
-					p.teleport(target);
-					
-					p.sendMessage(ChatUtils.utils() + "You have teleported to player §c" + target.getName() + "§e.");
-					target.sendMessage(ChatUtils.utils() + "Player §c" + p.getName() + " §ehas teleported to you.");
-				}
-				
 			}
-			
 		}
 		
 		return false;
