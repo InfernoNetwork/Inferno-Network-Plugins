@@ -7,17 +7,20 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
+import inferno.network.cosmetictokens.CosmeticTokensAPI;
 import inferno.network.tokens.TokensAPI;
-
 
 public class OnJoin implements Listener{
 	
 	@EventHandler
 	public void onJoin(PlayerJoinEvent e){
-		
 		Player p = e.getPlayer();
 		
-		e.setJoinMessage(null);
+		e.setJoinMessage("");
+		
+		UUID uuid = p.getUniqueId();
+		TokensAPI.checkPlayer(p, uuid);
+		CosmeticTokensAPI.checkPlayer(p, uuid);
 		
 	}
 

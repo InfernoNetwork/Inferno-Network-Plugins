@@ -2,10 +2,11 @@ name: InfernoCore
 main: inferno.network.Main
 version: 1.0
 commands:
+    tokens:
+        aliases: [token, t]
+    cosmetictokens:
+        aliases: [cosmetictoken, ct]
+    ban:
+    unban:
     kick:
     warn:
-    ban:
-    fly:
-    gamemode:
-    tp:
-    tokens:

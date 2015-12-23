@@ -15,47 +15,35 @@ public class Kick implements CommandExecutor{
 		Player p = (Player) sender;
 		
 		if(cmd.getName().equalsIgnoreCase("kick")){
+			
 			if(!(p.hasPermission("inferno.kick"))){
 				
-				p.sendMessage(ChatUtils.prefix() + "§4You do not have the permission to execute this command.");
-				
+				p.sendMessage(ChatUtils.prefix() + "§4You do not have the correct permission to execute that command.");
 				return true;
 				
 			}
-			if(args.length == 0){
-				p.sendMessage(ChatUtils.prefix() + "Invalid args. Usage : /Kick <Player> [Reason]");
-				
-				return true;
-				
-			}else{
 			
-			if(args.length == 1){
-				p.sendMessage(ChatUtils.prefix() + "Invalid args. Usage : /Kick <Player> [Reason]");
+			if(args.length == 0 || args.length < 2){
 				
+				p.sendMessage(ChatUtils.prefix() + "Invalid args. Usage: /Kick <Player> <Reason>");
 				return true;
 				
-			}else{
-				
-			if(args.length == 2){
-				
+			}else if(args.length == 2){
 				Player target = Bukkit.getServer().getPlayer(args[0]);
 				
                 if (target == null) {
-                    sender.sendMessage(ChatUtils.prefix() + "Could not find player " + args[0]);
+                    sender.sendMessage(ChatUtils.prefix() + "Could not find player " + args[0] + "!");
                     return true;
                     
-                }else{
+                }
+                
+                target.kickPlayer("§c§lYou Have Been Kicked! \n§7Reason Specifed:§9 " + args[1]);
+                p.sendMessage(ChatUtils.prefix() + "You have kicked player " + target.getName() + ". Reason: " + args[1]);
 				
-				target.kickPlayer("§c§lYou Have Been Kicked! \n§7Reason Specifed:§9 " + args[1]);
-				p.sendMessage(ChatUtils.prefix() + "You have kicked player " + target.getName() + " for " + args[1]);
-					
-                		}
-					}
-				}
 			}
 		}
 		
 		return false;
+		
 	}
-
 }

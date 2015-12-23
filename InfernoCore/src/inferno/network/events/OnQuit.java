@@ -9,7 +9,7 @@ public class OnQuit implements Listener{
 	@EventHandler
 	public void onQuit(PlayerQuitEvent e){
 		
-		e.setQuitMessage(null);
+		e.setQuitMessage("");
 		
 	}
 
