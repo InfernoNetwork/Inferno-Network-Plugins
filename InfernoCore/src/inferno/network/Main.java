@@ -23,7 +23,7 @@ public class Main extends JavaPlugin{
 	public static Main plugin;
 	
 	public void onEnable(){
-		
+		plugin = this;
 		mysql = new MySQL("localhost:3306", "root", "", "network_player_data");
 		
 		getServer().getPluginManager().registerEvents(new OnJoin(), this);
