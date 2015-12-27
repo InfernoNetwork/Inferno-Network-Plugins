@@ -25,18 +25,23 @@ public class OnChat implements Listener {
 		Player p = e.getPlayer();
 
 		if (p.hasPermission("inferno.chat")) {
-			// Staff can chat without spam prevention
 			return;
 		}
 
 		if ((chat.contains(p.getName()))) {
+			
 			p.sendMessage(ChatUtils.prefix() + "You can only chat every 3 secounds.");
+			e.setCancelled(true);
+			
 		} else {
+			
 			chat.add(p.getName());
+			
 			Bukkit.getScheduler().scheduleSyncDelayedTask(Main.plugin, new Runnable() {
 				public void run() {
+					
 					chat.remove(p.getName());
-					e.setCancelled(true);
+					
 				}
 
 			}, 30L);
