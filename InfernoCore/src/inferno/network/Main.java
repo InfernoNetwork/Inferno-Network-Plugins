@@ -1,5 +1,6 @@
 package inferno.network;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 
 import org.bukkit.plugin.java.JavaPlugin;
@@ -43,6 +44,7 @@ public class Main extends JavaPlugin {
 		getCommand("friend").setExecutor(new FriendCommand());
 
 		FriendAPI.init();
+		initJoshDbs();
 
 	}
 
@@ -77,5 +79,22 @@ public class Main extends JavaPlugin {
 			return def;
 		}
 		return o.toString();
+	}
+
+	private void initJoshDbs() {
+
+		try {
+			Connection c = Main.plugin.getSQL().openConnection();
+			c.createStatement().execute(
+					"CREATE TABLE IF NOT EXISTS `player_cosmetictokens` (`uuid` VARCHAR(36) NOT NULL, `cosmetictokens` INT NOT NULL)");
+			c.createStatement().execute(
+					"CREATE TABLE IF NOT EXISTS `player_tokens` (`uuid` VARCHAR(36) NOT NULL, `tokens` INT NOT NULL)");
+			
+			c.createStatement().execute("CREATE TABLE IF NOT EXISTS `player_bans` (`uuid` VARCHAR(36) NOT NULL, `reason` VARCHAR(255))");
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

@@ -1,5 +1,6 @@
 package inferno.network.cosmetictokens;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -34,10 +35,10 @@ public class CosmeticTokensAPI {
 
 		try {
 
+			Connection c = Main.plugin.getSQL().openConnection();
 			String exe = "SELECT cosmetictokens FROM player_cosmetictokens WHERE uuid = '" + p.getUniqueId() + "'";
-			ResultSet rs = Main.plugin.getSQL().openConnection().createStatement().executeQuery(exe);
+			ResultSet rs = c.createStatement().executeQuery(exe);
 			if (rs.next()) {
-
 				return;
 
 			} else
@@ -58,7 +59,7 @@ public class CosmeticTokensAPI {
 
 		try {
 
-			PreparedStatement statement =  Main.plugin.getSQL().openConnection()
+			PreparedStatement statement = Main.plugin.getSQL().openConnection()
 					.prepareStatement("UPDATE player_cosmetictokens SET cosmetictokens = " + i + " WHERE uuid = '"
 							+ p.getUniqueId() + "'");
 			statement.executeUpdate();
@@ -77,7 +78,7 @@ public class CosmeticTokensAPI {
 		try {
 
 			String exe = "SELECT cosmetictokens FROM player_cosmetictokens WHERE uuid = '" + p.getUniqueId() + "'";
-			ResultSet rs =  Main.plugin.getSQL().openConnection().createStatement().executeQuery(exe);
+			ResultSet rs = Main.plugin.getSQL().openConnection().createStatement().executeQuery(exe);
 
 			if (rs.next()) {
 
@@ -97,5 +98,6 @@ public class CosmeticTokensAPI {
 		return 0;
 
 	}
+	
 
 }

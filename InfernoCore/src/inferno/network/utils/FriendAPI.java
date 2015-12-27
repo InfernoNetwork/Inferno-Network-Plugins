@@ -235,7 +235,6 @@ public class FriendAPI {
 				getAdd(UUID.fromString(s1)).friends.add(UUID.fromString(s2));
 				getAdd(UUID.fromString(s2)).friends.add(UUID.fromString(s1));
 			}
-			c.close();
 		} catch (SQLException e) {
 			Bukkit.getLogger().log(Level.WARNING, "[FriendAPI] Cannot open mysql connection");
 			e.printStackTrace();
@@ -251,8 +250,7 @@ public class FriendAPI {
 			ps.setString(1, p.uuid.toString());
 			ps.setInt(2, requestsDisabled ? 1 : 0);
 			ps.setInt(3, requestsDisabled ? 1 : 0);
-
-			c.close();
+			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -265,7 +263,7 @@ public class FriendAPI {
 			PreparedStatement ps = c.prepareStatement("INSERT INTO `friends`(`p1`, `p2`) VALUES (?,?)");
 			ps.setString(1, p1.toString());
 			ps.setString(2, p2.toString());
-			c.close();
+			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -280,7 +278,7 @@ public class FriendAPI {
 			ps.setString(2, p2.toString());
 			ps.setString(3, p2.toString());
 			ps.setString(4, p1.toString());
-			c.close();
+			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
