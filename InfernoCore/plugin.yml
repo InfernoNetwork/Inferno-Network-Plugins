@@ -10,3 +10,4 @@ commands:
     unban:
     kick:
     warn:
+    friend:

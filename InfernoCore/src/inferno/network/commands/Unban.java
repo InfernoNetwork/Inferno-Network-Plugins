@@ -10,7 +10,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import inferno.network.sql.MySQL;
+import inferno.network.Main;
 import inferno.network.utils.ChatUtils;
 
 public class Unban implements CommandExecutor{
@@ -57,7 +57,7 @@ public boolean onCommand(CommandSender sender, Command cmd, String label, String
 			
 			try {
 				   
-				PreparedStatement statement = MySQL.connection.prepareStatement("DELETE FROM player_bans WHERE uuid='" + target.getUniqueId() + "'");
+				PreparedStatement statement =  Main.plugin.getSQL().openConnection().prepareStatement("DELETE FROM player_bans WHERE uuid='" + target.getUniqueId() + "'");
 				statement.executeUpdate();
 				statement.close();
 	               

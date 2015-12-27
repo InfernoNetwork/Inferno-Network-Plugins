@@ -10,7 +10,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import inferno.network.sql.MySQL;
+import inferno.network.Main;
 import inferno.network.utils.ChatUtils;
 
 public class Ban implements CommandExecutor{
@@ -57,8 +57,7 @@ public class Ban implements CommandExecutor{
 	public void banPlayer(Player p, String reason){
 		
 		try {
-			   
-			PreparedStatement statement = MySQL.connection.prepareStatement("INSERT INTO player_bans (uuid, reason) VALUES ('" + p.getUniqueId() + "', '" + reason + "');");
+			PreparedStatement statement = Main.plugin.getSQL().openConnection().prepareStatement("INSERT INTO player_bans (uuid, reason) VALUES ('" + p.getUniqueId() + "', '" + reason + "');");
 			statement.executeUpdate();
 			statement.close();
                
@@ -72,7 +71,7 @@ public class Ban implements CommandExecutor{
 		
 		try{
 			
-			PreparedStatement statement = MySQL.connection.prepareStatement("SELECT reason FROM player_bans WHERE uuid='" + p.getUniqueId() + "'");
+			PreparedStatement statement =  Main.plugin.getSQL().openConnection().prepareStatement("SELECT reason FROM player_bans WHERE uuid='" + p.getUniqueId() + "'");
 			ResultSet result = statement.executeQuery();
 			
 			if(result.next()){
