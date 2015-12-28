@@ -1,3 +1,6 @@
 InfernoCore/.classpath
 *.project
 InfernoCore/.pmd
+InfernoCore/.classpath
+*.prefs
+*.classpath
