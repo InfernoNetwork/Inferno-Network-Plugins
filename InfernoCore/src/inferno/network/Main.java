@@ -19,6 +19,7 @@ import inferno.network.events.OnJoin;
 import inferno.network.events.OnLogin;
 import inferno.network.events.OnPluginMessage;
 import inferno.network.events.OnQuit;
+import inferno.network.events.OnSneak;
 import inferno.network.utils.FriendAPI;
 
 public class Main extends JavaPlugin {
@@ -35,6 +36,8 @@ public class Main extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new OnQuit(), this);
 		getServer().getPluginManager().registerEvents(new OnLogin(), this);
 		getServer().getPluginManager().registerEvents(new OnChat(), this);
+		
+		getServer().getPluginManager().registerEvents(new OnSneak(), this);
 	    getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
 	    getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new OnPluginMessage());
 	    
